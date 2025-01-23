@@ -1,6 +1,6 @@
 import java.awt.*;
 
-public class Saab95{ hej
+public class Saab95{
 
     public boolean turboOn;
     public int nrDoors; // Number of doors on the car
