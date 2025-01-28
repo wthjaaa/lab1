@@ -50,6 +50,10 @@ public abstract class Car implements Movable{
         }
     }
 
+    public int getDirection() {
+        return direction;
+    }
+
     @Override
     public void turnLeft() {
         direction = (direction - 1 + 4) % 4;
