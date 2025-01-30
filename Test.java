@@ -70,6 +70,7 @@ abstract class CarTest {
         double initialSpeed = car.getCurrentSpeed();
         car.brake(0.5);
         assertTrue(car.getCurrentSpeed() < initialSpeed, "The speed should decrease after brake");
+        assertThrows(IllegalArgumentException.class, () -> car.brake(2));
     }
 
     @Test
