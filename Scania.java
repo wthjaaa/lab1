@@ -8,6 +8,19 @@ public class Scania extends Car{
         this.flakAngle = 0;
     }
 
+    @Override
+    public double speedFactor() {
+        return getEnginePower() * 0.1;
+    }
+
+    @Override
+    public void move(){
+        if (flakAngle > 0) {
+            throw new IllegalStateException("Lastbilen får inte köra med flaket uppe");
+        }
+        super.move();
+    }
+
     public double getFlakAngle() {
         return flakAngle;
     }
@@ -34,16 +47,4 @@ public class Scania extends Car{
         }
     }
 
-    @Override
-    public double speedFactor() {
-        return getEnginePower() * 0.1;
-    }
-
-    @Override
-    public void move(){
-        if (flakAngle > 0) {
-            throw new IllegalStateException("Lastbilen får inte köra med flaket uppe");
-        }
-        super.move();
-    }
 }
