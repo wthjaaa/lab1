@@ -10,7 +10,7 @@ class CarTransportTest {
     @BeforeEach
     void setUp() {
         transport = new CarTransport(Color.BLACK, 300);
-        volvo = new Volvo240Mod();
+        volvo = new Volvo240();
         volvo.setPosition(0,0);
     }
 
