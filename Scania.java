@@ -1,10 +1,10 @@
 import java.awt.*;
 
-public class Scania extends Car{
+public class Scania extends Truck {
     private double flakAngle;
 
-    public Scania(int nrDoors, double enginePower, Color color, String modelName) {
-        super(nrDoors, enginePower, color, modelName);
+    public Scania() {
+        super(2, 400, Color.GRAY, "Scania");
         this.flakAngle = 0;
     }
 

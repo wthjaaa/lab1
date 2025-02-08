@@ -3,14 +3,14 @@ import java.awt.*;
 import java.util.Deque;
 import java.util.LinkedList;
 
-public class CarTransport extends Car {
+public class CarTransport extends Truck {
 
     private boolean rampDown; // True when ramp is down
     private Deque<Car> loadedCars; //Stack
     private final int max_cars = 8;
 
     public CarTransport(Color color, double enginePower) {
-        super(2,enginePower,color, "Car Transport");
+        super(2,enginePower, color, "Car Transport");
         this.rampDown = false;
         this.loadedCars = new LinkedList<>();
     }
@@ -38,9 +38,11 @@ public class CarTransport extends Car {
         if (!rampDown) {
             throw new IllegalStateException("Rampen måste vara nere för att lasta bilar!");
         }
-        if (car instanceof CarTransport) {
-            throw new IllegalArgumentException("Kan inte lasta en CarTransport bil");
+
+        if (loadedCars.contains(car)){
+            throw new IllegalStateException("Bilen är redan lastad!");
         }
+
         if (loadedCars.size() >= max_cars) {
             throw new IllegalStateException("Fartyget är redan fullt");
         }

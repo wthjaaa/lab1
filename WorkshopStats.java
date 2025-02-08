@@ -7,15 +7,15 @@ public class WorkshopStats {
         volvoworkshop.loadCar(new Volvo240()); // Allowed
         // volvoworkshop.loadCar(new Saab95()); // complie-time error!
 
-        Workshop<Car> generalWorkshop = new Workshop<>(10);
+        Workshop<Vehicle> generalWorkshop = new Workshop<>(10);
         generalWorkshop.loadCar(new Saab95()); // Allowed
-        generalWorkshop.loadCar(new Scania(2,500, Color.BLUE,"ScaniaX" )); // Allowed
+        generalWorkshop.loadCar(new Scania()); // Allowed
 
         Volvo240 unloadedVolvo = volvoworkshop.unloadCar();
-        Car unloadedGeneralCar = generalWorkshop.unloadCar();
+        Vehicle unloadedGeneralCar = generalWorkshop.unloadCar();
 
-        System.out.println("Unloaded car from Volvo workshop: " + unloadedVolvo.getClass().getSimpleName());
-        System.out.println("Unloaded car from General workshop: " + unloadedGeneralCar.getClass().getSimpleName());
+        System.out.println("Unloaded Vehicle from Volvo workshop: " + unloadedVolvo.getClass().getSimpleName());
+        System.out.println("Unloaded Vehicle from General workshop: " + unloadedGeneralCar.getClass().getSimpleName());
 
     }
 

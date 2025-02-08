@@ -1,18 +1,18 @@
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-class ScaniaTest extends CarTest{
+class ScaniaTest extends TruckTest{
 
     @Override
-    protected Car createCar(){
-        return new Scania(2,400, java.awt.Color.RED, "Scania");
+    protected Truck createTruck(){
+        return new Scania();
     }
 
     @Test
     void testRaiseWhileMoving() {
-        Scania scania = (Scania) car;
-        car.startEngine();
-        car.gas(0.5);
+        Scania scania = (Scania) truck;
+        truck.startEngine();
+        truck.gas(0.5);
 
         IllegalStateException exception = assertThrows(IllegalStateException.class, scania::raiseFlak);
     }
@@ -20,9 +20,9 @@ class ScaniaTest extends CarTest{
     @Override
     @Test
     void testSpeedFactor() {
-        double expectedSpeedFactor = car.getEnginePower()*0.1;
+        double expectedSpeedFactor = truck.getEnginePower()*0.1;
 
-        assertEquals(expectedSpeedFactor, car.speedFactor(), 0.01, "Hastigheten bör räknas korrekt");
+        assertEquals(expectedSpeedFactor, truck.speedFactor(), 0.01, "Hastigheten bör räknas korrekt");
 
 
     }

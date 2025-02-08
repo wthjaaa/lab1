@@ -1,29 +1,29 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class Workshop<T extends Car> {
+public class Workshop<T extends Vehicle> {
     private final int maxCapacity;
-    private final List<T> cars;
+    private final List<T> vehicles;
 
     public Workshop(int maxCapacity) {
         this.maxCapacity = maxCapacity;
-        this.cars = new ArrayList<>();
+        this.vehicles = new ArrayList<>();
     }
-    public void loadCar(T car) {
-        if (cars.size() >= maxCapacity) { // Call size() on the list, not on the car
+    public void loadCar(T vehicle) {
+        if (vehicles.size() >= maxCapacity) { // Call size() on the list, not on the car
             throw new IllegalStateException("Workshop is full");
         }
-        cars.add(car);
+        vehicles.add(vehicle);
     }
     public T unloadCar() {
-        if (cars.isEmpty()) {
+        if (vehicles.isEmpty()) {
             throw new IllegalStateException("No cars in the workshop");
         }
-        return cars.remove(cars.size()-1);
+        return vehicles.remove(vehicles.size()-1);
 
     }
 
     public int getNumberOfCars() {
-        return cars.size();
+        return vehicles.size();
     }
 }
