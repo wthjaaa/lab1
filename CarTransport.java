@@ -1,5 +1,6 @@
 
-import java.awt.*;
+import java.awt.Color;
+import java.util.ArrayList;
 import java.util.Deque;
 import java.util.LinkedList;
 
@@ -8,11 +9,15 @@ public class CarTransport extends Truck {
     private boolean rampDown; // True when ramp is down
     private Deque<Car> loadedCars; //Stack
     private final int max_cars = 8;
+    private static final java.util.List<CarTransport> allCarTransports = new ArrayList<>();
 
     public CarTransport(Color color, double enginePower) {
         super(2,enginePower, color, "Car Transport");
         this.rampDown = false;
         this.loadedCars = new LinkedList<>();
+        synchronized (allCarTransports) {
+            allCarTransports.add(this);
+        }
     }
 
 
@@ -50,6 +55,14 @@ public class CarTransport extends Truck {
             throw new IllegalArgumentException("Bilen är för långt bort för att lastas");
         }
 
+        synchronized (allCarTransports) {
+            for (CarTransport transport : allCarTransports) {
+                if (transport != this && transport.loadedCars.contains(car)) {
+                    throw new IllegalStateException("Bilen är redan lastad i en annan Transport bil");
+                }
+            }
+        }
+
         loadedCars.push(car);
         car.setPosition(getX(), getY());
     }
@@ -66,6 +79,10 @@ public class CarTransport extends Truck {
         car.setPosition(getX() + 2, getY());
         return car;
 
+    }
+
+    public boolean isCarLoaded(Car car) {
+        return loadedCars.contains(car);
     }
 
     @Override
