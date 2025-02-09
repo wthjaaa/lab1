@@ -1,5 +1,5 @@
 
-import java.awt.Color;
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.Deque;
 import java.util.LinkedList;
